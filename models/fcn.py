@@ -1,7 +1,7 @@
 # https://pytorch.org/tutorials/beginner/pytorch_with_examples.html
 
 import torch
-from pyops.pqlayer import RQDenseLayer
+import torch.nn as nn
 
 
 class FCN(torch.nn.Module):
@@ -11,8 +11,8 @@ class FCN(torch.nn.Module):
         member variables.
         """
         super(FCN, self).__init__()
-        self.linear1 = RQDenseLayer(D_in, H)
-        self.linear2 = RQDenseLayer(H, num_classes)
+        self.linear1 = nn.Linear(D_in, H)
+        self.linear2 = nn.Linear(H, num_classes)
 
     def forward(self, x):
         """
