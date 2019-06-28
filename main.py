@@ -27,7 +27,8 @@ network_choices = {
     'vgg16'     : vgg16,
     'vgg19'     : vgg19,
     'dense'     : densenet_cifar,
-    'fcn'       : FCN
+    'fcn'       : FCN,
+    'cnn'       : CNN
 }
 
 data_loaders = {

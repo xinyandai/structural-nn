@@ -35,7 +35,8 @@ class PQDenseLayer(nn.Module):
         super(PQDenseLayer, self).__init__()
         self.ds = dimension_split(d_input, m)
         self.fcs = nn.ModuleList([
-            KmeansDenseLayer(self.ds[i+1] - self.ds[i], d_output, ks)
+            KmeansDenseLayer(self.ds[i+1] - self.ds[i],
+                             d_output, ks)
             for i in range(m)])
 
     def forward(self, x):
