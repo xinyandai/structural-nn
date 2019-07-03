@@ -8,7 +8,7 @@ def euclid(q: torch.Tensor, x: torch.Tensor):
     x = x.transpose(0, 1)
     q_norm = torch.norm(q, dim=1, keepdim=True)
     x_norm = torch.norm(x, dim=0, keepdim=True)
-    return q.mm(x) + q_norm + x_norm
+    return -2.0 * q.mm(x) + q_norm + x_norm
 
 
 def vq(q: torch.Tensor, x: torch.Tensor):
