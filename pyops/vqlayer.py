@@ -40,7 +40,6 @@ class PQLinear(nn.Module):
     def __init__(self, d_input, d_output, bias=True, m=2, ks=32):
         super(PQLinear, self).__init__()
         assert ks ** m == d_output
-        assert d_output**m == d_output
         self.ds = dimension_split(d_input, m)
         self.m = m
         self.ks = ks
