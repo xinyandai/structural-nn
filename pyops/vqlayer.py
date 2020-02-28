@@ -24,7 +24,8 @@ def product_add(x, m, ks):
     HW = list(x[0].shape[2:])
 
     s = [N] + [-1] + [1 for _ in range(m-1)] + HW
-    sum_ = torch.zeros([N] + [ks for _ in range(m)] + HW)
+
+    sum_ = x[0].new_zeros([N] + [ks for _ in range(m)] + HW)
     for i, x_i in enumerate(x):
         x_i = x_i.reshape(s)
         if i == 0:
