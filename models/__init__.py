@@ -1,5 +1,5 @@
-from .fcn import FCN
-from .cnn import CNN
+from .fcn import *
+from .cnn import *
 from .resnet import *
 from .vgg import *
 from .densenet import *

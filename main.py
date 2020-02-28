@@ -28,6 +28,7 @@ network_choices = {
     'vgg19'     : vgg19,
     'dense'     : densenet_cifar,
     'fcn'       : FCN,
+    'vqfcn'     : VQFCN,
     'cnn'       : CNN
 }
 
@@ -111,9 +112,9 @@ def main():
                           momentum=args.momentum, weight_decay=args.weight_decay)
 
     if args.dataset == 'mnist':
-        epochs = [2]
-        lrs = [0.01]
-        args.epochs = 20
+        epochs = [10, 20]
+        lrs = [0.01, 0.001]
+        args.epochs = 30
     else:
         epochs = [51, 71]
         lrs = [0.01, 0.005]
