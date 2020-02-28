@@ -60,6 +60,7 @@ class AQLinear(nn.Module):
         assert ks ** (m * depth) == d_output
         self.depth = depth
         self.ks = ks
+        self.m = m
         self.fcs = nn.ModuleList(
             [PQLinear(d_input, ks**m, bias, m, ks)
              for _ in range(depth)]
@@ -68,7 +69,7 @@ class AQLinear(nn.Module):
 
     def forward(self, x):
         x = [fc(x) for fc in self.fcs]
-        return product_add(x, self.depth, self.ks)
+        return product_add(x, self.depth, self.ks**self.m)
 
 
 class PQConv2d(nn.Module):
@@ -99,6 +100,7 @@ class AQConv2d(nn.Module):
         assert out_channels == ks ** (m*depth)
         self.depth = depth
         self.ks = ks
+        self.m = m
         self.fcs = nn.ModuleList(
             [PQConv2d(in_channels, ks**m, kernel_size,
                          stride, padding, dilation, groups, bias,
@@ -107,7 +109,7 @@ class AQConv2d(nn.Module):
 
     def forward(self, x):
         x = [fc(x) for fc in self.fcs]
-        return product_add(x, self.depth, self.ks)
+        return product_add(x, self.depth, self.ks**self.m)
 
 
 if __name__ == '__main__':
