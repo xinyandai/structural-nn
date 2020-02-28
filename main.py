@@ -26,6 +26,8 @@ network_choices = {
     'vgg13'     : vgg13,
     'vgg16'     : vgg16,
     'vgg19'     : vgg19,
+    'wide28'    : WideResNet28,
+    'vqwide28'  : VQWideResNet28,
     'dense'     : densenet_cifar,
     'fcn'       : FCN,
     'vqfcn'     : VQFCN,
@@ -75,7 +77,7 @@ def main():
     parser.add_argument('--dataset', type=str, default='mnist', choices=data_loaders.keys())
     parser.add_argument('--num-classes', type=int, default=10, choices=classes_choices.values())
 
-    parser.add_argument('--logdir', type=str, default=None,
+    parser.add_argument('--logdir', type=str, default='./log/tmp',
                         help='For Saving the logs')
     parser.add_argument('--batch-size', type=int, default=32, metavar='N',
                         help='input batch size for training (default: 32)')
